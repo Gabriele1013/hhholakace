@@ -1,23 +1,27 @@
 pipeline {
     agent any
+    environment {
+        // Esto le dice al cliente que use una versión de API que sí entienda
+        DOCKER_API_VERSION = '1.44' 
+    }
 
     tools {
-        nodejs "Node22"
+        nodejs "Node25"
         dockerTool "Dockertool" 
     }
 
     stages {
         stage('Instalar dependencias') {
             steps {
+                sh 'apt-get update && apt-get install -y libatomic1 || true'
                 sh 'npm install'
             }
         }
 
-        stage('Ejecutar tests') {
-            steps {
-                sh 'chmod +x ./node_modules/.bin/jest'  // Soluciona el problema de permisos
-                sh 'npm test -- --ci --runInBand'
-            }
+        stage('Ejecutar tests') { 
+            steps { 
+                sh 'chmod +x ./node_modules/.bin/jest' // Soluciona el problema de permisos sh 'npm test -- --ci --runInBand' 
+            } 
         }
 
         stage('Construir Imagen Docker') {
@@ -43,4 +47,3 @@ pipeline {
         }
     }
 }
- 

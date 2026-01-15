@@ -14,6 +14,9 @@
         "jest": "^30.2.0",
         "supertest": "^7.2.2"
     },
+    "directories": {
+        "test": "tests"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Gabriele1013/jenkinsDespliegue.git"
@@ -26,8 +29,5 @@
         "url": "https://github.com/Gabriele1013/jenkinsDespliegue/issues"
     },
     "homepage": "https://github.com/Gabriele1013/jenkinsDespliegue#readme",
-    "devDependencies": {},
-    "directories": {
-        "test": "tests"
-    }
+    "devDependencies": {}
 }
